@@ -1,0 +1,9 @@
+#lang racket
+
+(require racket/cmdline)
+(require racket/path)
+
+(define current-d (path->string (current-directory))) 
+(define is-android (foldl (lambda (a result)
+                            (or? (string-suffix? a ".iml") result))
+                          #f (directory-list)))
